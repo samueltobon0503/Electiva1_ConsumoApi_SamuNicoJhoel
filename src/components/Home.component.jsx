@@ -38,7 +38,6 @@ export const HomeComponent = () => {
             <div style={{ margin: "20px" }}>
                 <h1 style={{ margin: "20px", display: 'flex', justifyContent: 'center' }}> Personajes de Rick y Morty </h1>
 
-                {/* <input value={pageNumber} onChange={handleInputChange} type="text" placeholder='Ingresa una pagina del 1-20' /> */}
                 <InputGroup size="sm" className="mb-3" />
                     <InputGroup.Text id="inputGroup-sizing-sm">Ingresa la pagina del 1 al 20</InputGroup.Text>
                     <Form.Control  value= {pageNumber} onChange={handleInputChange} type="text"
@@ -57,7 +56,6 @@ export const HomeComponent = () => {
                                 <Card.Body>
                                     <Card.Title>{c.name}</Card.Title>
                                     <Card.Text>{c.status}</Card.Text>
-                                    {/* <Button variant="primary"></Button> */}
                                 </Card.Body>
                             </Card>
                         ))}

@@ -34,8 +34,6 @@ export const useFetchAPI = (pageNumber = '') =>{
         }
     }, [`${URL_BASE}/character/?page=${pageNumber}`]);
 
-    console.log(state.data)
-
     return {
         data: state.data,
         isLoading: state.isLoading,
