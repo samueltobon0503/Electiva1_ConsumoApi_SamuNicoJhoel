@@ -15,7 +15,7 @@ export const useFetchAPI = (pageNumber = '') =>{
             isLoading: true,
         });
 
-        const response = await fetch(`${URL_BASE}/character/?page=20`);
+        const response = await fetch(`${URL_BASE}/character/?page=${pageNumber}`);
         const data = await response.json();
 
         setState({
@@ -32,7 +32,7 @@ export const useFetchAPI = (pageNumber = '') =>{
         return () => {
 
         }
-    }, [`${URL_BASE}/character/?page=20`]);
+    }, [`${URL_BASE}/character/?page=${pageNumber}`]);
 
     console.log(state.data)
 
