@@ -1,22 +1,45 @@
-import { Button, Card, CardBody, CardTitle } from 'react-bootstrap'
+import { Button, Card, CardTitle } from 'react-bootstrap';
+import { useFetchAPI } from "../hooks/useFechtAPI";
 
 export const HomeComponent = () => {
 
+    const { data, isLoading, hasError } = useFetchAPI('');
+
+    if(isLoading){
+        return (
+            <>
+            <h2>Is loading</h2>
+            </>
+        )
+    }
+
+    if(hasError){
+        return (
+            <>
+            <h2>Hay un error</h2>
+            </>
+        )
+    }
     return (
         <>
             <div style={{ margin: "20px" }}>
-                <h1> Personajes de Rick y Morty </h1>
-                <div style={{display: 'flex', justifyContent: 'center' }}>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant='top' />
-                        <CardBody>
-                            <CardTitle> Morty </CardTitle>
-                            <Card.Text>
-                                Aqui va la definicion del personaje
-                            </Card.Text>
-                            <Button variant='primary' > boton </Button>
-                        </CardBody>
-                    </Card>
+                <h1 style={{ margin: "20px", display: 'flex', justifyContent: 'center' }}> Personajes de Rick y Morty </h1>
+                <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    gap: '20px'
+                }}>
+                    {data?.results?.map((c) => (
+                        <Card key={c.id} style={{ width: "250px" }}>
+                            <Card.Img variant="top" src={c.image} />
+                            <Card.Body>
+                                <Card.Title>{c.name}</Card.Title>
+                                <Card.Text>{c.status}</Card.Text>
+                                {/* <Button variant="primary"></Button> */}
+                            </Card.Body>
+                        </Card>
+                    ))}
                 </div>
             </div>
         </>

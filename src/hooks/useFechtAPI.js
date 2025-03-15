@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { URL_BASE } from "../enviroment";
 
-export const useFetchAPI = () =>{
+export const useFetchAPI = (pageNumber = '') =>{
 
     const [state, setState] = useState({
         data: null,
@@ -15,7 +15,7 @@ export const useFetchAPI = () =>{
             isLoading: true,
         });
 
-        const response = await fetch(`${URL_BASE}/character/?page=19`);
+        const response = await fetch(`${URL_BASE}/character/?page=20`);
         const data = await response.json();
 
         setState({
@@ -32,7 +32,7 @@ export const useFetchAPI = () =>{
         return () => {
 
         }
-    }, [`${URL_BASE}/character/?page=19`]);
+    }, [`${URL_BASE}/character/?page=20`]);
 
     console.log(state.data)
 
