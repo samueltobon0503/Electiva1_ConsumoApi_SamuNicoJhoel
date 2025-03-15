@@ -7,13 +7,9 @@ import Form from 'react-bootstrap/Form';
 export const HomeComponent = () => {
 
     const [pageNumber, setPageNumber] = useState('');
-    const [currentPage, setCurrentPage] = useState('')
 
     const { data, isLoading, hasError } = useFetchAPI(pageNumber);
 
-    const onButtonClick = () => {
-        setCurrentPage(pageNumber)
-    }
     const handleInputChange = (event) => {
         setPageNumber(event.target.value)
     }
@@ -55,7 +51,9 @@ export const HomeComponent = () => {
                                 <Card.Img variant="top" src={c.image} />
                                 <Card.Body>
                                     <Card.Title>{c.name}</Card.Title>
-                                    <Card.Text>{c.status}</Card.Text>
+                                    <Card.Text><b>Estado:</b> {c.status}</Card.Text>
+                                    <Card.Text><b>Genero:</b> {c.gender}</Card.Text>
+                                    <Card.Text><b>Especie:</b> {c.species}</Card.Text>
                                 </Card.Body>
                             </Card>
                         ))}
